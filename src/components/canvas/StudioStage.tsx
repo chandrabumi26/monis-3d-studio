@@ -17,7 +17,7 @@ export function StudioStage() {
 
       {/* Modern Oval Studio Platform / Rug */}
       <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.005, 0]} receiveShadow>
-        <circleGeometry args={[2.8, 64]} />
+        <circleGeometry args={[3.2, 64]} />
         <meshStandardMaterial
           color="#f4f4f5"
           roughness={0.9}
@@ -27,7 +27,7 @@ export function StudioStage() {
 
       {/* Outer subtle decorative ring */}
       <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.006, 0]}>
-        <ringGeometry args={[2.8, 2.84, 64]} />
+        <ringGeometry args={[3.2, 3.24, 64]} />
         <meshBasicMaterial color="#d4d4d8" />
       </mesh>
 

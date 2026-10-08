@@ -29,8 +29,8 @@ export function RentModal() {
 
   const handleCopySpec = () => {
     const text = `Monis 3D Virtual Workspace Configuration:\n` +
-      items.map(i => `• [${i.slot}] ${i.name} - Rp ${i.price.toLocaleString('id-ID')}/bln`).join('\n') +
-      `\n\nTotal Rent: Rp ${total.toLocaleString('id-ID')}/bln`;
+      items.map(i => `• [${i.slot}] ${i.name} - $${i.price}/mo`).join('\n') +
+      `\n\nTotal Monthly Rent: $${total}/mo`;
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
@@ -55,13 +55,13 @@ export function RentModal() {
             {/* Modal Header */}
             <div className="mb-5">
               <span className="text-[11px] font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-400">
-                Setup Rental Estimate
+                Setup Rental Summary
               </span>
               <h3 className="text-xl font-extrabold tracking-tight mt-0.5">
-                Rincian Setup Workspace Anda
+                Your Workspace Setup Breakdown
               </h3>
               <p className="text-xs text-zinc-500 mt-1">
-                Langganan bulanan fleksibel. Gratis instalasi dan penggantian perangkat.
+                Flexible monthly subscription. Free white-glove delivery, assembly, and device upgrades.
               </p>
             </div>
 
@@ -79,8 +79,8 @@ export function RentModal() {
                     <span className="font-bold text-zinc-800 dark:text-zinc-200">{item.name}</span>
                   </div>
                   <span className="font-extrabold text-zinc-900 dark:text-zinc-100">
-                    Rp {item.price.toLocaleString('id-ID')}
-                    <span className="text-[10px] font-normal text-zinc-400">/bln</span>
+                    ${item.price}
+                    <span className="text-[10px] font-normal text-zinc-400">/mo</span>
                   </span>
                 </div>
               ))}
@@ -90,11 +90,11 @@ export function RentModal() {
             <div className="grid grid-cols-2 gap-2 mb-4 text-[11px] text-zinc-600 dark:text-zinc-400">
               <div className="flex items-center gap-2 bg-emerald-50/60 dark:bg-emerald-950/20 p-2 rounded-xl text-emerald-800 dark:text-emerald-300">
                 <Truck className="w-4 h-4 shrink-0" />
-                <span>Gratis pengiriman & perakitan</span>
+                <span>Free delivery & setup</span>
               </div>
               <div className="flex items-center gap-2 bg-indigo-50/60 dark:bg-indigo-950/20 p-2 rounded-xl text-indigo-800 dark:text-indigo-300">
                 <ShieldCheck className="w-4 h-4 shrink-0" />
-                <span>Garansi kenyamanan ergonomis 14 hari</span>
+                <span>14-day ergonomic guarantee</span>
               </div>
             </div>
 
@@ -102,14 +102,14 @@ export function RentModal() {
             <div className="pt-2 border-t border-zinc-200 dark:border-zinc-800">
               <div className="flex items-baseline justify-between mb-4">
                 <div>
-                  <span className="text-xs text-zinc-500 font-medium">Total Estimasi Sewa:</span>
-                  <p className="text-[10px] text-zinc-400">Dapat dibatalkan / ganti unit kapan saja</p>
+                  <span className="text-xs text-zinc-500 font-medium">Estimated Monthly Rent:</span>
+                  <p className="text-[10px] text-zinc-400">Cancel or swap components anytime</p>
                 </div>
                 <div className="text-right">
                   <span className="text-2xl font-black text-zinc-900 dark:text-zinc-100">
-                    Rp {total.toLocaleString('id-ID')}
+                    ${total}
                   </span>
-                  <span className="text-xs font-semibold text-zinc-500"> / bulan</span>
+                  <span className="text-xs font-semibold text-zinc-500"> / month</span>
                 </div>
               </div>
 
@@ -117,17 +117,17 @@ export function RentModal() {
                 <button
                   onClick={handleCopySpec}
                   className="flex items-center justify-center gap-1.5 px-3.5 py-3 rounded-2xl border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-xs font-bold transition-all cursor-pointer"
-                  title="Salin Spesifikasi Setup"
+                  title="Copy Setup Specs"
                 >
                   {copied ? <Check className="w-4 h-4 text-emerald-600" /> : <Copy className="w-4 h-4" />}
-                  <span>{copied ? 'Tersalin!' : 'Salin Spek'}</span>
+                  <span>{copied ? 'Copied!' : 'Copy Specs'}</span>
                 </button>
                 <button
                   onClick={handleConfirm}
                   className="flex-1 flex items-center justify-center gap-2 py-3 rounded-2xl bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 font-extrabold text-sm hover:scale-[1.02] active:scale-[0.98] transition-all shadow-xl cursor-pointer"
                 >
                   <Sparkles className="w-4 h-4 text-amber-400 fill-amber-400" />
-                  <span>Sewa Setup Ini</span>
+                  <span>Rent This Setup</span>
                 </button>
               </div>
             </div>
@@ -139,20 +139,20 @@ export function RentModal() {
               <CheckCircle2 className="w-9 h-9" />
             </div>
             <h3 className="text-2xl font-black tracking-tight mb-1">
-              Setup Berhasil Dipesan! 🎉
+              Setup Order Confirmed! 🎉
             </h3>
             <p className="text-xs text-zinc-500 max-w-sm mb-6 leading-relaxed">
-              Konfigurasi 3D virtual workspace Anda telah tersimpan. Tim kami akan segera menghubungi Anda untuk koordinasi pengiriman & instalasi!
+              Your 3D virtual workspace configuration has been saved. Our concierge team will reach out shortly to coordinate delivery & installation!
             </p>
 
             <div className="bg-zinc-50 dark:bg-zinc-800/60 p-4 rounded-2xl border border-zinc-200 dark:border-zinc-700 w-full mb-6 text-left text-xs">
               <div className="flex justify-between font-bold mb-1">
-                <span>Total Item:</span>
-                <span>{items.length} Unit</span>
+                <span>Total Items:</span>
+                <span>{items.length} Units</span>
               </div>
               <div className="flex justify-between font-black text-sm text-indigo-600 dark:text-indigo-400">
-                <span>Total Sewa Bulanan:</span>
-                <span>Rp {total.toLocaleString('id-ID')} / bulan</span>
+                <span>Monthly Subscription:</span>
+                <span>${total} / month</span>
               </div>
             </div>
 
@@ -163,7 +163,7 @@ export function RentModal() {
               }}
               className="w-full py-3 rounded-2xl bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 font-extrabold text-sm hover:opacity-90 transition-opacity cursor-pointer"
             >
-              Kembali ke 3D Customizer
+              Back to 3D Configurator
             </button>
           </div>
         )}

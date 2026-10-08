@@ -53,7 +53,7 @@ export function Header() {
                 ? 'bg-amber-500 text-white border-amber-600 shadow-md ring-2 ring-amber-400/40'
                 : 'bg-white/90 dark:bg-zinc-900/90 text-zinc-600 dark:text-zinc-400 border-zinc-200 dark:border-zinc-800 hover:text-zinc-900 dark:hover:text-zinc-100'
             }`}
-            title={showHotspots ? 'Sembunyikan Pin Petunjuk 3D' : 'Tampilkan Pin Petunjuk 3D'}
+            title={showHotspots ? 'Hide 3D interactive pins' : 'Show 3D interactive pins'}
           >
             {showHotspots ? <Pin className="w-3.5 h-3.5 fill-current" /> : <PinOff className="w-3.5 h-3.5" />}
             <span>Pin {showHotspots ? 'ON' : 'OFF'}</span>
@@ -102,7 +102,7 @@ export function Header() {
           <button
             onClick={resetSetup}
             className="p-2.5 rounded-2xl bg-white/90 dark:bg-zinc-900/90 hover:bg-zinc-100 dark:hover:bg-zinc-800 border border-zinc-200/80 dark:border-zinc-800 shadow-sm text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 transition-all cursor-pointer"
-            title="Reset ke setup awal"
+            title="Reset to default setup"
           >
             <RotateCcw className="w-4 h-4" />
           </button>
@@ -113,8 +113,8 @@ export function Header() {
             className="flex items-center gap-2 px-3.5 py-2 rounded-2xl bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 shadow-md hover:scale-105 active:scale-95 transition-all cursor-pointer font-bold text-xs"
           >
             <Sparkles className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
-            <span>Rp {totalRent.toLocaleString('id-ID')}</span>
-            <span className="text-[10px] opacity-75 font-normal">/bln</span>
+            <span>${totalRent}</span>
+            <span className="text-[10px] opacity-75 font-normal">/mo</span>
           </button>
         </div>
       </div>
